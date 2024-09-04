@@ -16,7 +16,7 @@ const config: QuartzConfig = {
     },
     locale: "es-ES",
     baseUrl: "andres-chirinos.github.io",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian","files"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
