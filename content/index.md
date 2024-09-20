@@ -1,6 +1,5 @@
 ---
-title: Welcome to Quartz
+title: Blog
 ---
-
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started. [[index copy]]
+# Bienvenido a mis apuntes
+Date un paseo y si algo te parece errado puedes hacer un issue o directamente un pull request
