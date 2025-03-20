@@ -1,18 +1,9 @@
-# Quartz v4
+# Bienvenido a mi Bóveda de Notas
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+Esta es mi bóveda personal de notas donde organizo y almaceno información importante, ideas y proyectos en los que estoy trabajando. Aquí encontrarás una colección de notas que abarcan diversos temas y áreas de interés.
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
-Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
+## Créditos
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+Este repositorio está basado en [Quartz](https://quartz.jzhao.xyz/), un sistema de gestión de conocimiento personal que facilita la organización y el acceso a la información.
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
-
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+¡Espero que encuentres útil esta bóveda de notas!

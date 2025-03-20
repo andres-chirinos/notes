@@ -8,14 +8,12 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Inicio",
+    pageTitle: "El cuaderno de Andrés",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
+    analytics: { provider: 'google', tagId: 'G-E6N7CWHMYM' },
     locale: "es-ES",
-    baseUrl: "andres-chirinos.github.io",
+    baseUrl: "andres-chirinos.github.io/notes",
     ignorePatterns: ["private", "templates", ".obsidian","files"],
     defaultDateType: "created",
     theme: {
