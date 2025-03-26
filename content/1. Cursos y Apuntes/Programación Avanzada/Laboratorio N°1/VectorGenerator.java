@@ -19,7 +19,7 @@ public class VectorGenerator {
         }
         return arr;
     }
-    
+
     public static int[] shellSort(int[] arr) {
         int n = arr.length;
         for (int gap = n / 2; gap > 0; gap /= 2) {
@@ -34,7 +34,7 @@ public class VectorGenerator {
         }
         return arr;
     }
-    
+
     public static int[] insertionSort(int[] arr) {
         int n = arr.length;
         for (int i = 1; i < n; i++) {
@@ -48,7 +48,7 @@ public class VectorGenerator {
         }
         return arr;
     }
-    
+
     public static int[] selectionSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -64,7 +64,7 @@ public class VectorGenerator {
         }
         return arr;
     }
-    
+
     public static int[] quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);
@@ -73,7 +73,7 @@ public class VectorGenerator {
         }
         return arr;
     }
-    
+
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
@@ -90,7 +90,7 @@ public class VectorGenerator {
         arr[high] = temp;
         return i + 1;
     }
-    
+
     // Método para generar vector aleatorio
     public static int[] generateVector(int n, int min, int max) {
         int[] vector = new int[n];
@@ -100,77 +100,76 @@ public class VectorGenerator {
         }
         return vector;
     }
-    
+
     // Modo CLI para probar los algoritmos desde la consola
     public static void runCLI() {
-    Scanner scanner = new Scanner(System.in);
-    while (scanner.hasNextLine()) {
-        //System.out.println("Ingrese el vector (números separados por espacios o comas):");
-        String input = scanner.nextLine();
-        if (input.trim().isEmpty()) {
-            break;
-        }
-        String[] tokens = input.split("[,\\s]+");
-        int[] vector = new int[tokens.length];
-        try {
-            for (int i = 0; i < tokens.length; i++) {
-                vector[i] = Integer.parseInt(tokens[i]);
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String input = scanner.nextLine();
+            if (input.trim().isEmpty()) {
+                break;
             }
-        } catch (NumberFormatException ex) {
-            System.out.println("Error: Vector inválido. Asegúrate de ingresar números válidos.");
-            continue;
-        }
-        String[] algorithms = {"Bubble Sort", "Shell Sort", "Insertion Sort", "Selection Sort", "Quick Sort"};
-        for (int i = 0; i < algorithms.length; i++) {
-            int[] sortedVector = null;
-            long startTime = 0, endTime = 0, duration;
-            switch(i) {
-                case 0:
-                    startTime = System.nanoTime();
-                    sortedVector = bubbleSort(vector.clone());
-                    endTime = System.nanoTime();
-                    break;
-                case 1:
-                    startTime = System.nanoTime();
-                    sortedVector = shellSort(vector.clone());
-                    endTime = System.nanoTime();
-                    break;
-                case 2:
-                    startTime = System.nanoTime();
-                    sortedVector = insertionSort(vector.clone());
-                    endTime = System.nanoTime();
-                    break;
-                case 3:
-                    startTime = System.nanoTime();
-                    sortedVector = selectionSort(vector.clone());
-                    endTime = System.nanoTime();
-                    break;
-                case 4:
-                    startTime = System.nanoTime();
-                    sortedVector = quickSort(vector.clone(), 0, vector.length - 1);
-                    endTime = System.nanoTime();
-                    break;
+            String[] tokens = input.split("[,\\s]+");
+            int[] vector = new int[tokens.length];
+            try {
+                for (int i = 0; i < tokens.length; i++) {
+                    vector[i] = Integer.parseInt(tokens[i]);
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("Error: Vector inválido. Asegúrate de ingresar números válidos.");
+                continue;
             }
-            duration = (endTime - startTime) / 1000000; // convertir a milisegundos
-            //System.out.println(algorithms[i] + " - Vector ordenado: " + Arrays.toString(sortedVector));
-            System.out.println(duration);
+            String[] algorithms = { "Bubble Sort", "Shell Sort", "Insertion Sort", "Selection Sort", "Quick Sort" };
+            for (int i = 0; i < algorithms.length; i++) {
+                int[] sortedVector;
+                long startTime = 0, endTime = 0, duration;
+                switch (i) {
+                    case 0:
+                        startTime = System.nanoTime();
+                        sortedVector = bubbleSort(vector.clone());
+                        endTime = System.nanoTime();
+                        break;
+                    case 1:
+                        startTime = System.nanoTime();
+                        sortedVector = shellSort(vector.clone());
+                        endTime = System.nanoTime();
+                        break;
+                    case 2:
+                        startTime = System.nanoTime();
+                        sortedVector = insertionSort(vector.clone());
+                        endTime = System.nanoTime();
+                        break;
+                    case 3:
+                        startTime = System.nanoTime();
+                        sortedVector = selectionSort(vector.clone());
+                        endTime = System.nanoTime();
+                        break;
+                    case 4:
+                        startTime = System.nanoTime();
+                        sortedVector = quickSort(vector.clone(), 0, vector.length - 1);
+                        endTime = System.nanoTime();
+                        break;
+                }
+                duration = (endTime - startTime) / 1000000; // convertir a milisegundos
+                System.out.println(duration);
+            }
         }
+        scanner.close();
     }
-    scanner.close();
-}
+
     // Interfaz gráfica
     public static class VectorGeneratorGUI extends JFrame {
         private JTextField sizeField, minField, maxField;
         private JTextArea vectorTextArea;
         private JComboBox<String> algorithmComboBox;
         private JLabel timeLabel;
-        
+
         public VectorGeneratorGUI() {
             setTitle("Generador y Ordenador de Vectores");
             setSize(600, 500);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(new BorderLayout());
-            
+
             // Panel para generación de vector
             JPanel generatePanel = new JPanel(new FlowLayout());
             generatePanel.add(new JLabel("Tamaño:"));
@@ -185,22 +184,23 @@ public class VectorGenerator {
             JButton generateButton = new JButton("Generar vector");
             generatePanel.add(generateButton);
             add(generatePanel, BorderLayout.NORTH);
-            
+
             // Área de texto para ver y editar el vector
             vectorTextArea = new JTextArea();
             JScrollPane scrollPane = new JScrollPane(vectorTextArea);
             add(scrollPane, BorderLayout.CENTER);
-            
+
             // Panel para ordenamiento
             JPanel sortPanel = new JPanel(new FlowLayout());
-            algorithmComboBox = new JComboBox<>(new String[] {"Bubble Sort", "Shell Sort", "Insertion Sort", "Selection Sort", "Quick Sort"});
+            algorithmComboBox = new JComboBox<>(
+                    new String[] { "Bubble Sort", "Shell Sort", "Insertion Sort", "Selection Sort", "Quick Sort" });
             sortPanel.add(algorithmComboBox);
             JButton sortButton = new JButton("Ordenar vector");
             sortPanel.add(sortButton);
             timeLabel = new JLabel("Tiempo: ");
             sortPanel.add(timeLabel);
             add(sortPanel, BorderLayout.SOUTH);
-            
+
             // Acción para generar el vector
             generateButton.addActionListener(new ActionListener() {
                 @Override
@@ -208,7 +208,7 @@ public class VectorGenerator {
                     generateVectorAction();
                 }
             });
-            
+
             // Acción para ordenar el vector
             sortButton.addActionListener(new ActionListener() {
                 @Override
@@ -216,34 +216,33 @@ public class VectorGenerator {
                     sortVectorAction();
                 }
             });
-            
+
             setVisible(true);
         }
-        
+
         private void generateVectorAction() {
             try {
                 int n = Integer.parseInt(sizeField.getText());
                 int min = Integer.parseInt(minField.getText());
                 int max = Integer.parseInt(maxField.getText());
-                if(n <= 0 || min > max) {
+                if (n <= 0 || min > max) {
                     JOptionPane.showMessageDialog(this, "Parámetros inválidos.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 int[] vector = VectorGenerator.generateVector(n, min, max);
-                // Mostrar el vector como una lista de números separados por espacios
                 vectorTextArea.setText(Arrays.toString(vector).replaceAll("[\\[\\],]", ""));
-            } catch(NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Ingresa valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Ingresa valores numéricos válidos.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
-        
+
         private void sortVectorAction() {
             String text = vectorTextArea.getText().trim();
-            if(text.isEmpty()) {
+            if (text.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "El vector está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            // Parsear el vector (números separados por espacios o comas)
             String[] tokens = text.split("[,\\s]+");
             int[] vector;
             try {
@@ -251,14 +250,15 @@ public class VectorGenerator {
                 for (int i = 0; i < tokens.length; i++) {
                     vector[i] = Integer.parseInt(tokens[i]);
                 }
-            } catch(NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "El vector contiene elementos no numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "El vector contiene elementos no numéricos.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
             int option = algorithmComboBox.getSelectedIndex();
             int[] sortedVector = null;
             long startTime, endTime, duration;
-            switch(option) {
+            switch (option) {
                 case 0:
                     startTime = System.nanoTime();
                     sortedVector = bubbleSort(vector.clone());
@@ -289,13 +289,13 @@ public class VectorGenerator {
                     return;
             }
             duration = (endTime - startTime) / 1000000; // en milisegundos
-            // Actualizar el área de texto con el vector ordenado
             vectorTextArea.setText(Arrays.toString(sortedVector).replaceAll("[\\[\\],]", ""));
             timeLabel.setText("Tiempo: " + duration + " ms");
         }
     }
-    
-    // Método main: si se ejecuta con argumento "cli" se usa la consola; de lo contrario, la GUI
+
+    // Método main: si se ejecuta con argumento "cli" se usa la consola; de lo
+    // contrario, la GUI
     public static void main(String[] args) {
         if (args.length > 0 && args[0].equalsIgnoreCase("cli")) {
             runCLI();
